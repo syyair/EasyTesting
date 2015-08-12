@@ -1,0 +1,146 @@
+08-07 10:23:15 D/PreferenceUtils:  
+08-07 10:23:15 D/PreferenceUtils:  
+08-07 10:23:15 D/PreferenceUtils: ---- Phone=Xiaomi/MI 3W ----
+08-07 10:23:15 D/PreferenceUtils:  
+08-07 10:23:15 D/PreferenceUtils: ---- Phone=Xiaomi/MI 3W ----
+08-07 10:23:15 D/PreferenceUtils: [a:300] App version = V3.3.0
+08-07 10:23:15 D/PreferenceUtils: [a:302] Log will be opened.
+08-07 10:23:15 D/DeamonUtils:  
+08-07 10:23:15 D/DeamonUtils:  
+08-07 10:23:15 D/DeamonUtils: ---- Phone=Xiaomi/MI 3W ----
+08-07 10:23:15 D/DeamonUtils:  
+08-07 10:23:15 D/DeamonUtils: ---- Phone=Xiaomi/MI 3W ----
+08-07 10:23:15 D/DeamonUtils: [a:65] deamon_wifi_3_3_0
+08-07 10:23:17 D/NBListManager: getFreeList() list.size:22
+08-07 10:23:17 D/NBListManager: getOtherList() list.size:12
+08-07 10:23:17 D/DeamonUtils: [a:65] deamon_wifi_3_3_0
+08-07 10:23:17 D/DeamonUtils: [a:65] deamon_wifi_3_3_0
+08-07 10:23:18 D/NBListManager: [a:950] Scanner resume
+08-07 10:23:18 D/NBListManager: [handleMessage:977] Scanner handleMessage startScan
+08-07 10:23:18 D/CollectFunc: [a:34]  CollectFuncItem -> {key:ui_enter, devtype:android, time:1438914198029, cid:101, c:1, s:}
+08-07 10:23:18 D/Collect: [b:207] generateId : 78df8d65a4c30a70cdbfba47542ddb15
+08-07 10:23:18 D/Collect: [c:232] can collect : false
+08-07 10:23:19 D/CollectFunc: [a:34]  CollectFuncItem -> {key:ui_enter, devtype:android, time:1438914199608, cid:102, c:1, s:}
+08-07 10:23:19 D/Collect: [b:207] generateId : e4bbc9a39ceb881e8cc5789f160e6a3f
+08-07 10:23:19 D/Collect: [c:232] can collect : false
+08-07 10:23:20 D/NBListManager: onScanResultAvailable()
+08-07 10:23:20 D/NBListManager: updateAccessPointList()
+08-07 10:23:20 D/NBListManager: scanResults.size:43
+08-07 10:23:20 D/Collect: [c:232] can collect : true
+08-07 10:23:20 D/NBListManager: getSystemAPList() configs.size:79
+08-07 10:23:20 D/NBListManager: systemRefreshUI()
+08-07 10:23:20 D/NBListManager: dispatchWifiScaned()
+08-07 10:23:20 D/NBListManager: getPwdFromServer(false)
+08-07 10:23:20 D/WifiService: [a:133] wifi scan result available
+08-07 10:23:20 D/NBAutoConnectManager: [b:476] ddyy WiFi扫描完成false, false
+08-07 10:23:20 D/NBAutoConnectManager: [b:476] ddyy 自动连接是否开启：true
+08-07 10:23:20 D/NBAutoConnectManager: [b:476] ddyy 屏幕是否开启：false
+08-07 10:23:20 D/NBListManager: getFreeList() list.size:22
+08-07 10:23:20 D/NBListManager: getOtherList() list.size:12
+08-07 10:23:21 D/NBConnectManager: doOfflined pH@423818c0 mstate:CONNECTED
+08-07 10:23:21 D/NBConnectManager: ActionState：CONNECTED ->IDLE
+08-07 10:23:21 D/NBConnectManager: destroy
+08-07 10:23:21 D/NBListManager: getFreeList() list.size:22
+08-07 10:23:21 D/NBAutoConnectManager: [b:476] ddyy tryConnectCompleted
+08-07 10:23:21 D/CollectFunc: [a:34]  CollectFuncItem -> {key:ui_click, devtype:android, time:1438914201477, cid:102, c:3, s:}
+08-07 10:23:21 D/Collect: [b:207] generateId : d46aa1f500335e99a734188f2f8acc7e
+08-07 10:23:21 D/Collect: [c:232] can collect : false
+08-07 10:23:21 D/NBListManager: getFreeList() list.size:22
+08-07 10:23:21 D/NBListManager: getOtherList() list.size:12
+08-07 10:23:21 D/NBWiFiMonitor: isConnected networkInfo: NetworkInfo: type: WIFI[], state: DISCONNECTED/DISCONNECTED, reason: (unspecified), extra: <unknown ssid>, roaming: false, failover: false, isAvailable: true, isConnectedToProvisioningNetwork: false
+08-07 10:23:21 D/NBWiFiMonitor: getState.wifiInfo: null
+08-07 10:23:21 D/NBConnectManager: systemStateChanged IDLE with IDLE
+08-07 10:23:21 D/NBWiFiMonitor: isConnected networkInfo: NetworkInfo: type: WIFI[], state: DISCONNECTED/DISCONNECTED, reason: (unspecified), extra: <unknown ssid>, roaming: false, failover: false, isAvailable: true, isConnectedToProvisioningNetwork: false
+08-07 10:23:21 D/NBWiFiMonitor: getState.wifiInfo: null
+08-07 10:23:21 D/NBConnectManager: systemStateChanged IDLE with IDLE
+08-07 10:23:21 D/NBListManager: onScanResultAvailable()
+08-07 10:23:21 D/NBListManager: updateAccessPointList()
+08-07 10:23:21 D/NBListManager: scanResults.size:41
+08-07 10:23:21 D/Collect: [c:232] can collect : true
+08-07 10:23:21 D/NBListManager: getSystemAPList() configs.size:79
+08-07 10:23:21 D/NBListManager: systemRefreshUI()
+08-07 10:23:21 D/NBListManager: getPwdFromServer(false)
+08-07 10:23:21 D/SignUtils: [a:151] QID = 0
+08-07 10:23:21 D/Util: [g:640] getAppChannel sAppChannel=0
+08-07 10:23:21 D/Util: [g:640] getAppChannel sAppChannel=0
+08-07 10:23:21 D/NBConnectManager: onSupplicantStateChanged: DISCONNECTED
+08-07 10:23:21 D/startWifiService BootCompletedReceiver: [onReceive:19] android.net.wifi.STATE_CHANGE
+08-07 10:23:21 D/NBConnectManager: onSupplicantStateChanged: SCANNING
+08-07 10:23:21 D/AsyncRequest: [a:398] onErrorResponse->al: java.net.UnknownHostException: Unable to resolve host "api.free.wifi.360.cn": No address associated with hostname networkResponse: 0
+08-07 10:23:21 D/NBListManager: onError:-1
+08-07 10:23:21 D/startWifiService BootCompletedReceiver: [onReceive:19] android.net.wifi.STATE_CHANGE
+08-07 10:23:22 D/WifiService: [onStartCommand:403] onStartCommand enter
+08-07 10:23:22 D/WifiService: [onStartCommand:403] onStartCommand enter
+08-07 10:23:23 D/NBListManager: onScanResultAvailable()
+08-07 10:23:23 D/NBListManager: updateAccessPointList()
+08-07 10:23:23 D/NBListManager: scanResults.size:41
+08-07 10:23:23 D/Collect: [c:232] can collect : true
+08-07 10:23:23 D/NBListManager: getSystemAPList() configs.size:79
+08-07 10:23:23 D/NBListManager: systemRefreshUI()
+08-07 10:23:23 D/NBListManager: getPwdFromServer(false)
+08-07 10:23:23 D/SignUtils: [a:151] QID = 0
+08-07 10:23:23 D/Util: [g:640] getAppChannel sAppChannel=0
+08-07 10:23:23 D/Util: [g:640] getAppChannel sAppChannel=0
+08-07 10:23:23 D/NBConnectManager: onSupplicantStateChanged: DISCONNECTED
+08-07 10:23:23 D/NBConnectManager: onSupplicantStateChanged: SCANNING
+08-07 10:23:23 D/AsyncRequest: [a:398] onErrorResponse->al: java.net.UnknownHostException: Unable to resolve host "api.free.wifi.360.cn": No address associated with hostname networkResponse: 0
+08-07 10:23:23 D/NBListManager: onError:-1
+08-07 10:23:24 D/NBListManager: onScanResultAvailable()
+08-07 10:23:24 D/NBListManager: updateAccessPointList()
+08-07 10:23:24 D/NBListManager: scanResults.size:42
+08-07 10:23:24 D/Collect: [c:232] can collect : true
+08-07 10:23:24 D/NBListManager: getSystemAPList() configs.size:79
+08-07 10:23:24 D/NBListManager: systemRefreshUI()
+08-07 10:23:24 D/NBListManager: dispatchWifiScaned()
+08-07 10:23:24 D/NBListManager: getPwdFromServer(false)
+08-07 10:23:24 D/SignUtils: [a:151] QID = 0
+08-07 10:23:24 D/Util: [g:640] getAppChannel sAppChannel=0
+08-07 10:23:24 D/Util: [g:640] getAppChannel sAppChannel=0
+08-07 10:23:24 D/WifiService: [a:133] wifi scan result available
+08-07 10:23:24 D/NBAutoConnectManager: [b:476] ddyy WiFi扫描完成false, false
+08-07 10:23:24 D/NBAutoConnectManager: [b:476] ddyy 自动连接是否开启：true
+08-07 10:23:24 D/NBAutoConnectManager: [b:476] ddyy 屏幕是否开启：false
+08-07 10:23:24 D/NBConnectManager: onSupplicantStateChanged: DISCONNECTED
+08-07 10:23:24 D/NBListManager: getFreeList() list.size:21
+08-07 10:23:24 D/AsyncRequest: [a:398] onErrorResponse->al: java.net.UnknownHostException: Unable to resolve host "api.free.wifi.360.cn": No address associated with hostname networkResponse: 0
+08-07 10:23:24 D/NBListManager: onError:-1
+08-07 10:23:24 D/NBListManager: getOtherList() list.size:17
+08-07 10:23:24 D/WifiService: [onReceive:251] network changed
+08-07 10:23:25 D/startWifiService BootCompletedReceiver: [onReceive:19] android.net.conn.CONNECTIVITY_CHANGE
+08-07 10:23:25 D/WifiService: [onStartCommand:403] onStartCommand enter
+08-07 10:23:25 D/WifiService: [a:186] onConnected enter
+08-07 10:23:25 D/TimecardUtils: [f:150] synUsedNow call 0
+08-07 10:23:25 D/NBListManager: [c:962] Scanner pause
+08-07 10:23:26 D/NBWiFiManager: [e:498] strategy: null
+08-07 10:23:27 D/DeamonUtils: [a:65] deamon_wifi_3_3_0
+08-07 10:23:27 D/DeamonUtils: [a:65] deamon_wifi_3_3_0
+08-07 10:23:27 D/WifiService: [onReceive:251] network changed
+08-07 10:23:27 D/WifiService: [a:186] onConnected enter
+08-07 10:23:27 D/TimecardUtils: [f:150] synUsedNow call 0
+08-07 10:23:27 D/startWifiService BootCompletedReceiver: [onReceive:19] android.net.conn.CONNECTIVITY_CHANGE
+08-07 10:23:27 D/WifiService: [onReceive:251] network changed
+08-07 10:23:27 D/WifiService: [a:186] onConnected enter
+08-07 10:23:27 D/TimecardUtils: [f:150] synUsedNow call 0
+08-07 10:23:28 D/startWifiService BootCompletedReceiver: [onReceive:19] android.net.conn.CONNECTIVITY_CHANGE
+08-07 10:23:28 D/WifiService: [onStartCommand:403] onStartCommand enter
+08-07 10:23:28 D/WifiService: [a:186] onConnected enter
+08-07 10:23:28 D/TimecardUtils: [f:150] synUsedNow call 0
+08-07 10:23:28 D/WifiService: [onStartCommand:403] onStartCommand enter
+08-07 10:23:28 D/WifiService: [a:186] onConnected enter
+08-07 10:23:28 D/TimecardUtils: [f:150] synUsedNow call 0
+08-07 10:23:30 D/DeamonUtils: [a:65] deamon_wifi_3_3_0
+08-07 10:23:31 D/WifiService: [onReceive:266] screen off, pause scan
+08-07 10:23:31 D/WifiService: [onReceive:271] screen on, resume scan
+08-07 10:23:31 D/NBAutoConnectManager: [b:476] ddyy 屏幕开启
+08-07 10:23:31 D/NBAutoConnectManager: [b:476] ddyy 开始扫描WiFi
+08-07 10:23:31 D/NBListManager: onlyScanWifi()
+08-07 10:23:31 D/NBListManager: [b:957] Scanner forceScan
+08-07 10:23:31 D/NBConnectManager: onSupplicantStateChanged: SCANNING
+08-07 10:23:32 D/startWifiService AppStoreUnLockScreenReceiver : [onReceive:21] android.intent.action.USER_PRESENT
+08-07 10:23:32 D/WifiService: [onStartCommand:403] onStartCommand enter
+08-07 10:23:32 D/WifiService: [a:186] onConnected enter
+08-07 10:23:32 D/TimecardUtils: [f:150] synUsedNow call 0
+08-07 10:23:33 D/NBConnectManager: onSupplicantStateChanged: DISCONNECTED
+08-07 10:23:33 D/DeamonUtils: [a:65] deamon_wifi_3_3_0
+08-07 10:23:33 D/DeamonUtils: [a:65] deamon_wifi_3_3_0
+08-07 10:23:37 D/DeamonUtils: [a:65] deamon_wifi_3_3_0
