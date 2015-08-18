@@ -1,6 +1,8 @@
 package com.easytest.sunyingying.easytesting;
 
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -11,10 +13,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,6 +31,11 @@ public class MainActivity extends Activity {
     ArrayList<HashMap<String,Object>> arrayList;
     public ItemsAdapter adapter;
 
+    private String packagename;
+    private String activitylaunch;
+
+    private GetAppLaunchTime getAppLaunchTime = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +46,34 @@ public class MainActivity extends Activity {
         arrayList = listP();
         listView.setAdapter(adapter);
 
+        getAppLaunchTime = new GetAppLaunchTime();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                packagename = arrayList.get(position).get("packagename").toString();
+                activitylaunch = arrayList.get(position).get("mainactivity").toString();
+                startApp();
+            }
+        });
+
     }
+
+    public void startApp(){
+        ActivityManager am = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);
+        if("com.easytest.sunyingying.easytesting".equals(packagename)){
+            //如果是自己就不kill
+            return;
+        }else{
+            am.killBackgroundProcesses(packagename);
+
+            Intent launchIntent = new Intent();
+            launchIntent.setComponent(new ComponentName(packagename,activitylaunch));
+            long thisTime = getAppLaunchTime.startActivityWithTime(launchIntent);
+            Toast.makeText(MainActivity.this,"启动耗时： " + thisTime +"毫秒" ,Toast.LENGTH_LONG).show();
+        }
+    }
+
 
     public ArrayList<HashMap<String,Object>> listP(){
         PackageManager packageManager = this.getPackageManager();
