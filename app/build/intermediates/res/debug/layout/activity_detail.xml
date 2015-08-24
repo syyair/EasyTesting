@@ -1,0 +1,149 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/default_bg" >
+
+    <!-- 标题栏 -->
+
+    <include
+        android:id="@+id/detail_title"
+        layout="@layout/title_bar" >
+    </include>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/detail_title" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/default_bg" >
+
+            <!-- 进程信息 -->
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/input_bg"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/battery_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:drawableLeft="@drawable/icon_battery"
+                    android:gravity="center_vertical"
+                    android:text="点击开始监测后，在此显示结果"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/cpu_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:drawableLeft="@drawable/icon_cpu"
+                    android:gravity="center_vertical"
+                    android:text="点击开始监测后，在此显示结果"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/ram_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:drawableLeft="@drawable/icon_ram"
+                    android:gravity="center_vertical"
+                    android:text="点击开始监测后，在此显示结果"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/traffic_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:drawableLeft="@drawable/icon_traffic"
+                    android:gravity="center_vertical"
+                    android:text="点击开始监测后，在此显示结果"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <!-- 选项 -->
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearLayout2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/input_bg"
+                android:orientation="vertical" >
+
+                <CheckBox
+                    android:id="@+id/checkBox_log"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:button="@drawable/log_list_checkbox"
+                    android:text="记录监测结果到储存卡"
+                    android:textColor="@color/black" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_flow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:button="@drawable/log_list_checkbox"
+                    android:text="监测过程中显示悬浮窗"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/control_btn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/linearLayout1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/start_btn_bg"
+                android:text="开始监测"
+                android:textSize="17sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@id/control_btn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="80dp"
+                android:background="@drawable/ic_logo"
+                android:contentDescription="关于" />
+
+            <TextView
+                android:id="@+id/tv_weburl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/control_btn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:text="test" />
+
+            <TextView
+                android:id="@+id/tv_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_weburl"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:autoLink="all"
+                android:text="test"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout><!-- From: file:/E:/EasyTesting.git/trunk/app/src/main/res/layout/activity_detail.xml -->

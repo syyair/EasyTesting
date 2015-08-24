@@ -20,6 +20,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.easytest.sunyingying.service.FloatingService;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -53,7 +55,14 @@ public class MainActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 packagename = arrayList.get(position).get("packagename").toString();
                 activitylaunch = arrayList.get(position).get("mainactivity").toString();
+
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, FloatingService.class);
+                startService(intent);
+
                 startApp();
+
+
             }
         });
 
