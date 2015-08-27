@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easytest.sunyingying.service.FloatingService;
+import com.easytest.sunyingying.util.Util;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,6 +38,8 @@ public class MainActivity extends Activity {
     private String activitylaunch;
 
     private GetAppLaunchTime getAppLaunchTime = null;
+
+    private Util util = Util.getUtil();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,8 @@ public class MainActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 packagename = arrayList.get(position).get("packagename").toString();
                 activitylaunch = arrayList.get(position).get("mainactivity").toString();
+
+                util.setPackageName(packagename);
 
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this, FloatingService.class);
