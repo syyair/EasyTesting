@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easytest.sunyingying.service.FloatingService;
+import com.easytest.sunyingying.service.GetPID;
 import com.easytest.sunyingying.util.Util;
 
 import java.util.ArrayList;
@@ -36,17 +37,17 @@ public class MainActivity extends Activity {
 
     private String packagename;
     private String activitylaunch;
+    private int pid = -1;
 
     private GetAppLaunchTime getAppLaunchTime = null;
-
     private Util util = Util.getUtil();
+    private GetPID getPID = new GetPID();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView = (ListView)findViewById(R.id.list_item);
-
         adapter = new ItemsAdapter(this);
         arrayList = listP();
         listView.setAdapter(adapter);
@@ -58,19 +59,16 @@ public class MainActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 packagename = arrayList.get(position).get("packagename").toString();
                 activitylaunch = arrayList.get(position).get("mainactivity").toString();
-
+//                pid = getPID.getPid(getApplicationContext(),packagename);
                 util.setPackageName(packagename);
+//                util.setPID(pid);
 
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this, FloatingService.class);
                 startService(intent);
-
                 startApp();
-
-
             }
         });
-
     }
 
     public void startApp(){
@@ -79,15 +77,14 @@ public class MainActivity extends Activity {
             //如果是自己就不kill
             return;
         }else{
+            //先删除进程再启动，计算冷启动时间
             am.killBackgroundProcesses(packagename);
-
             Intent launchIntent = new Intent();
             launchIntent.setComponent(new ComponentName(packagename,activitylaunch));
             long thisTime = getAppLaunchTime.startActivityWithTime(launchIntent);
             Toast.makeText(MainActivity.this,"启动耗时： " + thisTime +"毫秒" ,Toast.LENGTH_LONG).show();
         }
     }
-
 
     public ArrayList<HashMap<String,Object>> listP(){
         PackageManager packageManager = this.getPackageManager();
@@ -124,7 +121,6 @@ public class MainActivity extends Activity {
     class ItemsAdapter extends BaseAdapter {
 
         private LayoutInflater inflater = null;
-
         public ItemsAdapter(Context context){
             //Obtains the LayoutInflater from the given context.
             inflater = LayoutInflater.from(context);
@@ -166,7 +162,6 @@ public class MainActivity extends Activity {
                 view = convertView;
                 //在View和Object之间进行关联.
                 holder = (Holder)view.getTag();
-
             }
             holder.appImage.setImageDrawable((Drawable)arrayList.get(position).get("appimage"));
             holder.appname.setText(arrayList.get(position).get("appname").toString());

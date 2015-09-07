@@ -30,16 +30,15 @@ public class FloatingService extends Service {
     private WindowManager windowManager;
     private WindowManager.LayoutParams layoutParams;
     private DisplayMetrics metrics;
-    private TextView tv_memory,tv_traffic,tv_cpu,tv_battery;
+    private TextView tv_memory,tv_traffic,tv_cpu,tv_battery,tv_batteryPercent;
     private BroadcastReceiver myBatteryReceiver;
     private IntentFilter batteryFilter;
     private int pid;
-    private GetPID getPID = new GetPID();
+    private GetPID getPid = new GetPID();
     private GetCpu getCpu = new GetCpu();
+    private GetMemory getMemory ;
     private Util util = Util.getUtil();
     private Handler handler = new Handler();
-
-    private int countTest = 1;
 
 
     @Nullable
@@ -70,10 +69,11 @@ public class FloatingService extends Service {
 
         getBatteryStatus();
         getCpu();
+        getMemory();
 
         //添加view显示出来
         windowManager.addView(view, layoutParams);
-
+        //刷新界面
         handler.post(refreshRunnable);
 
     }
@@ -84,6 +84,7 @@ public class FloatingService extends Service {
         tv_traffic = (TextView)view.findViewById(R.id.tv_traffic);
         tv_cpu = (TextView)view.findViewById(R.id.tv_cpu);
         tv_battery = (TextView)view.findViewById(R.id.tv_battery);
+        tv_batteryPercent = (TextView)view.findViewById(R.id.tv_batterypercent);
     }
 
     //获取电压
@@ -91,18 +92,23 @@ public class FloatingService extends Service {
         myBatteryReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                //获取电池电压
+                //获取电池电压 voltage
+                //获取当前电量 level
+                //获取最大电量 sacale
                 int voltage = intent.getIntExtra("voltage",-1);
-                //判断是否在充电
+                int sumVoltage = intent.getIntExtra("scale",-1);
+                int level = intent.getIntExtra("level",-1);
+                int percent = level * 100 / sumVoltage;
+                //判断是否在充电,返回值是0没有在充电，其他值可能用不同的途径在充电
                 int status = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
 
                 if(status == 0){
-                    tv_battery.setText("voltage : "+voltage+" mv");
+                    tv_battery.setText("voltage : " + voltage + " mV");
+                    tv_batteryPercent.setText("BatteryP : " + percent + "%");
                 }else{
                     tv_battery.setText("正在充电");
+                    tv_batteryPercent.setText("");
                 }
-
-
             }
         };
         //充电状态或者电池的电量发生变化
@@ -115,23 +121,38 @@ public class FloatingService extends Service {
     //获取cpu数据
     private void getCpu(){
 
-        String packageName = util.getPackageName();
-        pid = getPID.getPid(getApplicationContext(),packageName);
+        String packagename = util.getPackageName();
+        pid = getPid.getPid(getApplicationContext(), packagename);
+//        pid = util.getPID();
         getCpu.getCpuRatioInfo(pid);
         String processRatio = util.getProcessCpuRatio();
         tv_cpu.setText("CPU: " + processRatio);
     }
 
+    //获取进程占用的内存
+    private void getMemory(){
+        //创建对象的时候直接传入context为什么就是空？
+        getMemory = new GetMemory(getApplicationContext());
+        String packagename = util.getPackageName();
+        pid = getPid.getPid(getApplicationContext(),packagename);
+//        pid = util.getPID();
+        int[] pidArr = new int[1];
+        pidArr[0] = pid;
+        getMemory.getPss(pidArr);
+        String memory = util.transSize(util.getPss());
+        tv_memory.setText("Memory: " + memory);
+    }
     private void refreshUI(){
 
         //重新获取cpu占用率
         //之前一直为0是因为重新创建了GetCpu的对象导致cpu数据都清0了
-        getCpu.getCpuRatioInfo(pid);
-        String processRatio = util.getProcessCpuRatio();
-        tv_cpu.setText("CPU: " + processRatio);
+//        getCpu.getCpuRatioInfo(pid);
+//        String processRatio = util.getProcessCpuRatio();
+//        tv_cpu.setText("CPU: " + processRatio);
+        getCpu();
+        getMemory();
 
     }
-
     private Runnable refreshRunnable = new Runnable() {
         @Override
         public void run() {
@@ -140,4 +161,10 @@ public class FloatingService extends Service {
             handler.postDelayed(refreshRunnable,2000);
         }
     };
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(myBatteryReceiver);
+    }
 }

@@ -2,30 +2,30 @@
 <items version="2" >
 
     <item
-        jar="E:\EasyTesting.git\trunk\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="E:\EasyTesting.git\trunk\app\build\intermediates\pre-dexed\debug\classes-82b6eb0a47b3e66e6fa8cdf471b9ae2f9d9d3527.jar" />
-    </item>
-    <item
         jar="E:\EasyTesting.git\trunk\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
         jumboMode="false"
-        revision="23.0.0 rc3"
+        revision="23.0.0"
         sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
         <dex dex="E:\EasyTesting.git\trunk\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-c2acea53108e4642e8e6da5ff60ee3a832d39acd.jar" />
     </item>
     <item
-        jar="D:\androidstudio\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jar="D:\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
         jumboMode="false"
-        revision="23.0.0 rc3"
+        revision="23.0.0"
         sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="E:\EasyTesting.git\trunk\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-ce7b9c44565dffbbe122a90b0be571faf83040cd.jar" />
+        <dex dex="E:\EasyTesting.git\trunk\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-8565d8a53cd68adacfad143f18f5794ed6394c6b.jar" />
+    </item>
+    <item
+        jar="E:\EasyTesting.git\trunk\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="E:\EasyTesting.git\trunk\app\build\intermediates\pre-dexed\debug\classes-82b6eb0a47b3e66e6fa8cdf471b9ae2f9d9d3527.jar" />
     </item>
     <item
         jar="E:\EasyTesting.git\trunk\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.0 rc3"
+        revision="23.0.0"
         sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
         <dex dex="E:\EasyTesting.git\trunk\app\build\intermediates\pre-dexed\debug\classes-5c03658498d31b6414748035bf9f06a4a831ad52.jar" />
     </item>

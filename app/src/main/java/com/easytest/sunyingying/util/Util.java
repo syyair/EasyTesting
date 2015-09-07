@@ -1,5 +1,7 @@
 package com.easytest.sunyingying.util;
 
+import java.text.NumberFormat;
+
 /**
  * Created by sunyingying on 2015/8/27.
  */
@@ -10,6 +12,7 @@ public class Util {
     private String processCpuRatio = "0.00%";
     private String totalCpuRatio = "0.00%";
     private String packageName;
+    private long pss;
 
     public static Util getUtil(){
         if(util == null){
@@ -47,7 +50,27 @@ public class Util {
         return packageName;
     }
 
+    public long getPss() {
+        return pss;
+    }
+
+    public void setPss(long pss) {
+        this.pss = pss;
+    }
+
     public void setPackageName(String packageName) {
         this.packageName = packageName;
+    }
+
+    public String transSize(long originalSize){
+        NumberFormat numberFormat = NumberFormat.getNumberInstance();
+        numberFormat.setMaximumFractionDigits(2);
+        if(originalSize / 1024 == 0){
+            return originalSize + "KB";
+        }else if (originalSize / 1048576 == 0){
+            return numberFormat.format((float) originalSize / 1024) + "MB";
+        }else{
+            return numberFormat.format((float) originalSize / 1048576) + "GB";
+        }
     }
 }
