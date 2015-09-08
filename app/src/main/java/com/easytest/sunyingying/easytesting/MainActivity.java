@@ -37,7 +37,6 @@ public class MainActivity extends Activity {
 
     private String packagename;
     private String activitylaunch;
-    private int pid = -1;
 
     private GetAppLaunchTime getAppLaunchTime = null;
     private Util util = Util.getUtil();
@@ -59,9 +58,9 @@ public class MainActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 packagename = arrayList.get(position).get("packagename").toString();
                 activitylaunch = arrayList.get(position).get("mainactivity").toString();
-//                pid = getPID.getPid(getApplicationContext(),packagename);
+                //getApplicationContext()返回的是当前进程的全局context所以应该在选择的应用启动后再获取
+                //pid = getPID.getPid(getApplicationContext(),packagename);
                 util.setPackageName(packagename);
-//                util.setPID(pid);
 
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this, FloatingService.class);

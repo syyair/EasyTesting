@@ -39,6 +39,7 @@ public class FloatingService extends Service {
     private GetMemory getMemory ;
     private Util util = Util.getUtil();
     private Handler handler = new Handler();
+    private String packagename;
 
 
     @Nullable
@@ -50,6 +51,11 @@ public class FloatingService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        //packagename参数在MainActivity类中选择应用的时候被赋值到util类中的setPackageName方法中
+        packagename = util.getPackageName();
+        //获取当前进程的pid
+        //Return the context of the single, global Application object of the current process.
+        pid = getPid.getPid(getApplicationContext(), packagename);
         view = LayoutInflater.from(this).inflate(R.layout.floating,null);
         windowManager = (WindowManager)this.getSystemService(WINDOW_SERVICE);
         metrics = new DisplayMetrics();
@@ -66,7 +72,6 @@ public class FloatingService extends Service {
                 PixelFormat.TRANSPARENT);
         layoutParams.gravity = Gravity.LEFT | Gravity.BOTTOM;
         initView();
-
         getBatteryStatus();
         getCpu();
         getMemory();
@@ -77,7 +82,6 @@ public class FloatingService extends Service {
         handler.post(refreshRunnable);
 
     }
-
 
     private void initView(){
         tv_memory = (TextView)view.findViewById(R.id.tv_memory);
@@ -120,10 +124,6 @@ public class FloatingService extends Service {
 
     //获取cpu数据
     private void getCpu(){
-
-        String packagename = util.getPackageName();
-        pid = getPid.getPid(getApplicationContext(), packagename);
-//        pid = util.getPID();
         getCpu.getCpuRatioInfo(pid);
         String processRatio = util.getProcessCpuRatio();
         tv_cpu.setText("CPU: " + processRatio);
@@ -133,9 +133,6 @@ public class FloatingService extends Service {
     private void getMemory(){
         //创建对象的时候直接传入context为什么就是空？
         getMemory = new GetMemory(getApplicationContext());
-        String packagename = util.getPackageName();
-        pid = getPid.getPid(getApplicationContext(),packagename);
-//        pid = util.getPID();
         int[] pidArr = new int[1];
         pidArr[0] = pid;
         getMemory.getPss(pidArr);
@@ -143,21 +140,14 @@ public class FloatingService extends Service {
         tv_memory.setText("Memory: " + memory);
     }
     private void refreshUI(){
-
-        //重新获取cpu占用率
-        //之前一直为0是因为重新创建了GetCpu的对象导致cpu数据都清0了
-//        getCpu.getCpuRatioInfo(pid);
-//        String processRatio = util.getProcessCpuRatio();
-//        tv_cpu.setText("CPU: " + processRatio);
         getCpu();
         getMemory();
-
     }
     private Runnable refreshRunnable = new Runnable() {
         @Override
         public void run() {
             refreshUI();
-            Log.e("easytest", "runnable is running");
+//            Log.e("easytest", "runnable is running");
             handler.postDelayed(refreshRunnable,2000);
         }
     };
