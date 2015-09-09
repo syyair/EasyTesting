@@ -5,6 +5,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
 import android.os.BatteryManager;
 import android.os.Handler;
@@ -21,6 +23,8 @@ import android.widget.TextView;
 import com.easytest.sunyingying.easytesting.R;
 import com.easytest.sunyingying.util.Util;
 
+import java.util.List;
+
 /**
  * Created by sunyingying on 2015/8/24.
  */
@@ -34,8 +38,11 @@ public class FloatingService extends Service {
     private BroadcastReceiver myBatteryReceiver;
     private IntentFilter batteryFilter;
     private int pid;
+    private int uid;
     private GetPID getPid = new GetPID();
+    private GetUID getUID = new GetUID();
     private GetCpu getCpu = new GetCpu();
+    private GetTraffic getTraffic;
     private GetMemory getMemory ;
     private Util util = Util.getUtil();
     private Handler handler = new Handler();
@@ -56,7 +63,9 @@ public class FloatingService extends Service {
         //获取当前进程的pid
         //Return the context of the single, global Application object of the current process.
         pid = getPid.getPid(getApplicationContext(), packagename);
-        view = LayoutInflater.from(this).inflate(R.layout.floating,null);
+        //获取当前进程的uid
+        uid = getUID.getUID(getApplicationContext(), packagename);
+        view = LayoutInflater.from(this).inflate(R.layout.floating, null);
         windowManager = (WindowManager)this.getSystemService(WINDOW_SERVICE);
         metrics = new DisplayMetrics();
         windowManager.getDefaultDisplay().getMetrics(metrics);
@@ -75,6 +84,7 @@ public class FloatingService extends Service {
         getBatteryStatus();
         getCpu();
         getMemory();
+        getTrafficInfo();
 
         //添加view显示出来
         windowManager.addView(view, layoutParams);
@@ -119,7 +129,7 @@ public class FloatingService extends Service {
         batteryFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         //注册一个广播，用于获取电量信息，包括一个BroadcastReceiver和一个Filter
         //电池的充电状态、电荷级别改变，不能通过组建声明接收这个广播，只有通过Context.registerReceiver()注册
-        registerReceiver(myBatteryReceiver,batteryFilter);
+        registerReceiver(myBatteryReceiver, batteryFilter);
     }
 
     //获取cpu数据
@@ -142,13 +152,14 @@ public class FloatingService extends Service {
     private void refreshUI(){
         getCpu();
         getMemory();
+        getTrafficInfo();
     }
     private Runnable refreshRunnable = new Runnable() {
         @Override
         public void run() {
             refreshUI();
 //            Log.e("easytest", "runnable is running");
-            handler.postDelayed(refreshRunnable,2000);
+            handler.postDelayed(refreshRunnable,1000);
         }
     };
 
@@ -156,5 +167,22 @@ public class FloatingService extends Service {
     public void onDestroy() {
         super.onDestroy();
         unregisterReceiver(myBatteryReceiver);
+    }
+
+    public void getTrafficInfo(){
+        // 创建对象的时候直接new为什么不可以？
+        getTraffic = new GetTraffic();
+        long fluent = getTraffic.getFluent(uid);
+        switch (getTraffic.getConnectInfo(getApplicationContext())){
+            case "wifi":
+                tv_traffic.setText("WIFI: " + util.transSizeFluent(fluent));
+                break;
+            case "mobile":
+                tv_traffic.setText("MOBILE: " + util.transSizeFluent(fluent));
+                break;
+            case "没有网络":
+                tv_traffic.setText("没有网络");
+                break;
+        }
     }
 }

@@ -13,6 +13,8 @@ public class Util {
     private String totalCpuRatio = "0.00%";
     private String packageName;
     private long pss;
+    private int UID = -1;
+    private long lastFluent;
 
     public static Util getUtil(){
         if(util == null){
@@ -72,5 +74,35 @@ public class Util {
         }else{
             return numberFormat.format((float) originalSize / 1048576) + "GB";
         }
+    }
+
+    public String transSizeFluent(long originalSize){
+        NumberFormat numberFormat = NumberFormat.getNumberInstance();
+        numberFormat.setMaximumFractionDigits(2);
+        if(originalSize / 1024 == 0){
+            return originalSize + "bytes/s";
+        }
+        else if (originalSize / 1048576 == 0){
+            return numberFormat.format((float) originalSize / 1024) + "kb/s";
+        }
+        else{
+            return numberFormat.format((float) originalSize / 1048576) + "mb/s";
+        }
+    }
+
+    public int getUID() {
+        return UID;
+    }
+
+    public void setUID(int UID) {
+        this.UID = UID;
+    }
+
+    public long getLastFluent() {
+        return lastFluent;
+    }
+
+    public void setLastFluent(long lastFluent) {
+        this.lastFluent = lastFluent;
     }
 }
