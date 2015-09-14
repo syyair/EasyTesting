@@ -2,13 +2,6 @@
 <items version="2" >
 
     <item
-        jar="E:\EasyTesting.git\trunk\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="23.0.0"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="E:\EasyTesting.git\trunk\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-c2acea53108e4642e8e6da5ff60ee3a832d39acd.jar" />
-    </item>
-    <item
         jar="D:\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
         jumboMode="false"
         revision="23.0.0"
@@ -28,6 +21,13 @@
         revision="23.0.0"
         sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
         <dex dex="E:\EasyTesting.git\trunk\app\build\intermediates\pre-dexed\debug\classes-5c03658498d31b6414748035bf9f06a4a831ad52.jar" />
+    </item>
+    <item
+        jar="E:\EasyTesting.git\trunk\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="E:\EasyTesting.git\trunk\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-c2acea53108e4642e8e6da5ff60ee3a832d39acd.jar" />
     </item>
 
 </items>

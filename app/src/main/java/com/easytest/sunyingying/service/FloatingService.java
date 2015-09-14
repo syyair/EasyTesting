@@ -16,6 +16,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -47,7 +48,8 @@ public class FloatingService extends Service {
     private Util util = Util.getUtil();
     private Handler handler = new Handler();
     private String packagename;
-
+    private float paramsX = 0 , paramsY = 0;
+    private float touchX,touchY;
 
     @Nullable
     @Override
@@ -67,8 +69,8 @@ public class FloatingService extends Service {
         uid = getUID.getUID(getApplicationContext(), packagename);
         view = LayoutInflater.from(this).inflate(R.layout.floating, null);
         windowManager = (WindowManager)this.getSystemService(WINDOW_SERVICE);
-        metrics = new DisplayMetrics();
-        windowManager.getDefaultDisplay().getMetrics(metrics);
+//        metrics = new DisplayMetrics();
+//        windowManager.getDefaultDisplay().getMetrics(metrics);
             /*
 			 * LayoutParams.TYPE_SYSTEM_ERROR：保证该悬浮窗所有View的最上层
 			 * LayoutParams.FLAG_NOT_FOCUSABLE:该浮动窗不会获得焦点，但可以获得拖动
@@ -90,6 +92,34 @@ public class FloatingService extends Service {
         windowManager.addView(view, layoutParams);
         //刷新界面
         handler.post(refreshRunnable);
+        //拖动悬浮窗
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                layoutParams.gravity = Gravity.LEFT | Gravity.TOP;
+                //获取相对屏幕的x坐标
+                paramsX = event.getRawX();
+                //获取相对屏幕的y坐标,25是系统状态栏的高度
+                paramsY = event.getRawY() - 25;
+                Log.e("easytest","paramsX is "+paramsX+" paramsY is "+paramsY);
+
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        touchX = event.getX();
+                        touchY = event.getY();
+                        Log.e("easytest","touchX is "+touchX+" touchY is "+touchY);
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        updataViewPosition();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        updataViewPosition();
+                        touchX = touchY = 0;
+                        break;
+                }
+                return true;
+            }
+        });
 
     }
 
@@ -185,4 +215,11 @@ public class FloatingService extends Service {
                 break;
         }
     }
+
+    public void updataViewPosition(){
+        layoutParams.x = (int) (paramsX - touchX);
+        layoutParams.y = (int) (paramsY - touchY);
+        windowManager.updateViewLayout(view,layoutParams);
+    }
+
 }
